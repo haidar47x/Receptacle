@@ -8,8 +8,32 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Title="Receptacle">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
-    </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Column="0" Background="LightGray">
+            <Rectangle Fill="Blue" Height="30" Margin="5" />
+            <Rectangle Fill="Green" Height="30" Margin="5" />
+            <Rectangle Fill="Red" Height="30" Margin="5" />
+        </StackPanel>
+
+        <Grid Grid.Column="1" Background="LightYellow">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Rectangle Fill="Orange" Margin="5" />
+            <Rectangle Fill="Purple" Grid.Column="1" Margin="5" />
+            <Rectangle Fill="Cyan" Grid.Row="1" Margin="5" />
+            <Rectangle Fill="Pink" Grid.Row="1" Grid.Column="1" Margin="5" />
+        </Grid>
+    </Grid>
 </Window>
