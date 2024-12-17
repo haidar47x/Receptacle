@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Receptacle (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Receptacle (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
