@@ -6,34 +6,65 @@
     xmlns:local="using:Receptacle"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="using:Receptacle.Models"
     mc:Ignorable="d"
     Title="Receptacle">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-
-        <StackPanel Orientation="Horizontal" Grid.Column="0" Background="LightGray">
-            <Rectangle Fill="Blue" Height="30" Margin="5" />
-            <Rectangle Fill="Green" Height="30" Margin="5" />
-            <Rectangle Fill="Red" Height="30" Margin="5" />
-        </StackPanel>
-
-        <Grid Grid.Column="1" Background="LightYellow">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+    <Window.SystemBackdrop>
+        <MicaBackdrop />
+    </Window.SystemBackdrop>
+    <Grid Margin="16,32,16,32">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="16">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-
-            <Rectangle Fill="Orange" Margin="5" />
-            <Rectangle Fill="Purple" Grid.Column="1" Margin="5" />
-            <Rectangle Fill="Cyan" Grid.Row="1" Margin="5" />
-            <Rectangle Fill="Pink" Grid.Row="1" Grid.Column="1" Margin="5" />
+            <TextBlock Grid.Column="0" Text="My Collection" FontWeight="Bold" />
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Text="Filter" FontWeight="SemiBold" VerticalAlignment="Center" />
+                <ComboBox x:Name="ItemFilter" MinWidth="128" Margin="16,0,0,0"/>
+            </StackPanel>
         </Grid>
+        <ListView Grid.Row="1" x:Name="ItemList">
+            <ListView.HeaderTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="160" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" 
+                                BorderBrush="DimGray"
+                                BorderThickness="0,0,0,1">
+                            <TextBlock Text="Title"
+                                       Margin="16,8,0,8"
+                                       FontWeight="SemiBold" />
+                        </Border>
+                        <Border Grid.Column="1" 
+                                BorderBrush="DimGray"
+                                BorderThickness="0,0,0,1">
+                            <TextBlock Text="Type"
+                                       Margin="16,8,0,8"
+                                       FontWeight="SemiBold" />
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </ListView.HeaderTemplate>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="model:MediaItem">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="160" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{x:Bind Name}" />
+                        <TextBlock Grid.Column="1" Text="{x:Bind MediumInfo.Name}" />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Window>

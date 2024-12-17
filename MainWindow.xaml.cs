@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Microsoft.UI;
+using Microsoft.UI.Composition.SystemBackdrops;
+using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -13,15 +16,19 @@ using Microsoft.UI.Xaml.Navigation;
 using Receptacle.Models;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Graphics.Printing.OptionDetails;
 
 namespace Receptacle {
     public sealed partial class MainWindow : Window {
 
         private IList<MediaItem> _items { get; set; }
         private bool _isLoaded = false;
+
         public MainWindow() {
             this.InitializeComponent();
-            this.PopulateData();
+            ExtendsContentIntoTitleBar = true;
+            this.AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Standard;
+            ItemList.Loaded += ItemList_Loaded;
         }
 
         public void PopulateData() {
@@ -66,5 +73,10 @@ namespace Receptacle {
             };
         }
 
+        private void ItemList_Loaded(object sender, RoutedEventArgs e) {
+            var listView = (ListView)sender;
+            this.PopulateData();
+            listView.ItemsSource = _items;
+        }
     }
 }
