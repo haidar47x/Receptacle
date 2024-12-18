@@ -16,6 +16,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Margin="16">
             <Grid.ColumnDefinitions>
@@ -25,7 +26,7 @@
             <TextBlock Grid.Column="0" Text="My Collection" FontWeight="Bold" />
             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBlock Text="Filter" FontWeight="SemiBold" VerticalAlignment="Center" />
-                <ComboBox x:Name="ItemFilter" MinWidth="128" Margin="16,0,0,0"/>
+                <ComboBox x:Name="ItemFilter"  MinWidth="128" Margin="16,0,0,0"/>
             </StackPanel>
         </Grid>
         <ListView Grid.Row="1" x:Name="ItemList">
@@ -66,5 +67,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button Grid.Row="2" x:Name="AddButton" Content="Add Item" HorizontalAlignment="Right" Margin="0,0,16,0" />
     </Grid>
 </Window>
