@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Receptacle.Enums;
+using Receptacle.Shared.Enums;
 
 namespace Receptacle.Models {
     public class MediaItem {

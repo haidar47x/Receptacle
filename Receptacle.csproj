@@ -63,4 +63,7 @@
   <ItemGroup>
     <None Include="C:\Users\Haidar Ali\GitHub\Receptacle\.editorconfig" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\" />
+  </ItemGroup>
 </Project>

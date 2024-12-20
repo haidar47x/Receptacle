@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.UI.Xaml.Automation.Peers;
-using Receptacle.Enums;
+using Receptacle.Shared.Enums;
 
 namespace Receptacle.Models {
     public class Medium {

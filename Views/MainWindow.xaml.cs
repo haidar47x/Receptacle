@@ -14,8 +14,8 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
-using Receptacle.Enums;
 using Receptacle.Models;
+using Receptacle.Shared.Enums;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Graphics.Printing.OptionDetails;
@@ -30,8 +30,13 @@ namespace Receptacle {
 
         public MainWindow() {
             this.InitializeComponent();
+            this.InitWindow();
+        }
+
+        public void InitWindow() {
             ExtendsContentIntoTitleBar = true;
             this.AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Standard;
+
             ItemList.Loaded += ItemList_Loaded;
             ItemFilter.Loaded += ItemFilter_Loaded;
             AddButton.Click += AddButton_Clicked;
@@ -44,10 +49,10 @@ namespace Receptacle {
             MediaItem cd = new MediaItem {
                 Id = 1,
                 Name = "Classical Favorites",
-                MediaType = Enums.ItemType.Music,
+                MediaType = ItemType.Music,
                 MediumInfo = new Medium {
                     Id = 1, 
-                    MediaType = Enums.ItemType.Music,
+                    MediaType = ItemType.Music,
                     Name = "CD"
                 }, 
             };
@@ -55,10 +60,10 @@ namespace Receptacle {
             MediaItem book = new MediaItem {
                 Id = 2,
                 Name = "Classic Fairy Tales",
-                MediaType = Enums.ItemType.Book,
+                MediaType = ItemType.Book,
                 MediumInfo = new Medium {
                     Id = 2, 
-                    MediaType = Enums.ItemType.Book,
+                    MediaType = ItemType.Book,
                     Name = "Book"
                 }, 
             };
@@ -66,10 +71,10 @@ namespace Receptacle {
             MediaItem bluRay= new MediaItem {
                 Id = 3,
                 Name = "The Terminator",
-                MediaType = Enums.ItemType.Video,
+                MediaType = ItemType.Video,
                 MediumInfo = new Medium {
                     Id = 2, 
-                    MediaType = Enums.ItemType.Video,
+                    MediaType = ItemType.Video,
                     Name = "BluRay"
                 }, 
             };

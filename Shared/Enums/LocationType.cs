@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Receptacle.Enums {
-    public enum ItemType {
-        Music,
-        Video,
-        Book
+namespace Receptacle.Shared.Enums {
+    public enum LocationType {
+        InCollection,
+        Loaned
     }
 }
