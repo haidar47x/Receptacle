@@ -20,7 +20,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Graphics.Printing.OptionDetails;
 
-namespace Receptacle {
+namespace Receptacle.Views {
     public sealed partial class MainWindow : Window {
 
         private IList<MediaItem> _items { get; set; }
@@ -39,7 +39,7 @@ namespace Receptacle {
 
             ItemList.Loaded += ItemList_Loaded;
             ItemFilter.Loaded += ItemFilter_Loaded;
-            AddButton.Click += AddButton_Clicked;
+            // AddButton.Click += AddButton_Clicked;
         }
 
         public void PopulateData() {

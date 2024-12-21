@@ -26,7 +26,7 @@ namespace Receptacle {
         }
 
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args) {
-            m_window = new MainWindow();
+            m_window = new Views.MainWindow();
             if (m_window == null) {
                 Console.WriteLine("Main window is null.");
             } else {
