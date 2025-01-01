@@ -68,5 +68,5 @@
 			</ListView.ItemTemplate>
 		</ListView>
         <Button Grid.Row="2" x:Name="AddButton" Content="Add Item" HorizontalAlignment="Right" Margin="0,0,16,0" />
-	</Grid>
+    </Grid>
 </Window>
