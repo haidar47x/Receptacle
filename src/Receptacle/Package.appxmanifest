@@ -8,11 +8,11 @@
   IgnorableNamespaces="uap rescap">
 
   <Identity
-    Name="b456c54e-60d2-4337-9aaf-70534cf8cded"
+    Name="b0bba85b-4492-4705-8493-78b09f433045"
     Publisher="CN=Haidar Ali"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="b456c54e-60d2-4337-9aaf-70534cf8cded" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="b0bba85b-4492-4705-8493-78b09f433045" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>Receptacle</DisplayName>
