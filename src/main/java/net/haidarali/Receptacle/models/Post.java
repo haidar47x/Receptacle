@@ -1,24 +1,33 @@
 package net.haidarali.Receptacle.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 import java.time.LocalDateTime;
 
+@Entity
 public final class Post {
+
+    @Id
+    private String permaLink;
+
     private String id;
     private String subreddit;
     private String subredditId;
     private String title;
     private String content;
-    private String user;
+    private String author;
+    private String authorUrl;
+    private String domain;
+    private String url;
     private LocalDateTime dateCreated;
     private long comments;
-    private String score;
-    private String permaLink;
-    private String url;
-    private String domain;
+    private long score;
     private boolean isSelf;
     private boolean isVideo;
+    private boolean isMediaOnly;
     private boolean isRedditMediaDomain;
-    private boolean mediaOnly;
+    private boolean isOriginalContent;
     private boolean isSeen;
 
     public Post() {}
@@ -64,11 +73,11 @@ public final class Post {
     }
 
     public String getUser() {
-        return user;
+        return author;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUser(String author) {
+        this.author = author;
     }
 
     public LocalDateTime getDateCreated() {
@@ -85,14 +94,6 @@ public final class Post {
 
     public void setComments(long comments) {
         this.comments = comments;
-    }
-
-    public String getScore() {
-        return score;
-    }
-
-    public void setScore(String score) {
-        this.score = score;
     }
 
     public String getPermaLink() {
@@ -144,11 +145,11 @@ public final class Post {
     }
 
     public boolean isMediaOnly() {
-        return mediaOnly;
+        return isMediaOnly;
     }
 
     public void setMediaOnly(boolean mediaOnly) {
-        this.mediaOnly = mediaOnly;
+        this.isMediaOnly = mediaOnly;
     }
 
     public boolean isSeen() {
@@ -157,5 +158,37 @@ public final class Post {
 
     public void setSeen(boolean seen) {
         isSeen = seen;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getAuthorUrl() {
+        return authorUrl;
+    }
+
+    public void setAuthorUrl(String authorUrl) {
+        this.authorUrl = authorUrl;
+    }
+
+    public long getScore() {
+        return score;
+    }
+
+    public void setScore(long score) {
+        this.score = score;
+    }
+
+    public boolean isOriginalContent() {
+        return isOriginalContent;
+    }
+
+    public void setOriginalContent(boolean originalContent) {
+        isOriginalContent = originalContent;
     }
 }
