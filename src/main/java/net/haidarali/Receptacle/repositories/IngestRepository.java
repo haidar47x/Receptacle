@@ -7,5 +7,4 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface IngestRepository extends JpaRepository<Post, String> {
-}
+public interface IngestRepository extends JpaRepository<Post, String> {}

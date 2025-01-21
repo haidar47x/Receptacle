@@ -1,5 +1,6 @@
 package net.haidarali.Receptacle.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
@@ -14,12 +15,20 @@ public final class Post {
     private String id;
     private String subreddit;
     private String subredditId;
+
+    @Column(length = 512)
     private String title;
+
+    @Column(length = 8192)
     private String content;
+
     private String author;
     private String authorUrl;
     private String domain;
+
+    @Column(length = 1024)
     private String url;
+
     private LocalDateTime dateCreated;
     private long comments;
     private long score;

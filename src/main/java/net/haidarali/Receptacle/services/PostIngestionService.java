@@ -39,7 +39,9 @@ public class PostIngestionService {
 
                 JSONObject jsonPost = new JSONObject(jsonEntry);
                 Post post = mapJsonToPost(jsonPost);
-                posts.add(post);
+                if (post != null) {
+                    posts.add(post);
+                }
 
                 if (posts.size() >= batchSize) {
                     ingestRepository.saveAll(posts);
@@ -56,7 +58,7 @@ public class PostIngestionService {
         }
     }
 
-    private Post mapJsonToPost(JSONObject jsonPost) throws RuntimeException {
+    private Post mapJsonToPost(JSONObject jsonPost) throws PostParsingException {
         try {
             Post post = new Post();
             post.setId(jsonPost.getString("id"));
@@ -69,8 +71,8 @@ public class PostIngestionService {
             long timestamp = jsonPost.getLong("created_utc");
 
             if (timestamp == 0) {
-                throw new RuntimeException(String.format("Invalid timestamp: %s, %s",
-                        jsonPost.optString("title"), jsonPost.optString("id")));
+                log(new RuntimeException("Invalid timestamp"), jsonPost);
+                throw new PostParsingException(jsonPost.getString("title"), jsonPost.getString("id"));
             }
 
             Instant instant = Instant.ofEpochSecond(timestamp);
@@ -78,9 +80,25 @@ public class PostIngestionService {
             post.setDateCreated(localDateTime);
 
             post.setPermaLink(jsonPost.getString("permalink"));
-            post.setDomain(jsonPost.getString("domain"));
-            post.setUrl(jsonPost.getString("url"));
-            post.setSelf(jsonPost.getBoolean("is_self"));
+
+            post.setDomain("unavailable");
+            if (jsonPost.has("domain") && !jsonPost.isNull("domain")) {
+                post.setDomain(jsonPost.getString("domain"));
+            }
+
+            post.setUrl("unavailable");
+            if (jsonPost.has("url") && !jsonPost.isNull("url")) {
+                post.setUrl(jsonPost.getString("url"));
+            }
+
+            if (post.getDomain().equals("unavailable") && post.getUrl().equals("unavailable")) {
+                return null;
+            }
+
+            post.setSelf(false);
+            if (jsonPost.has("is_self")) {
+                post.setSelf(jsonPost.getBoolean("is_self"));
+            }
 
             post.setVideo(false);
             if (jsonPost.has("is_video")) {
@@ -108,9 +126,14 @@ public class PostIngestionService {
 
             return post;
         } catch (Exception e) {
-            throw new PostParsingException("Error parsing post:",
-                    jsonPost.optString("title"),
-                    jsonPost.optString("id"));
+            log(e, jsonPost);
+            throw new PostParsingException(jsonPost.getString("title"), jsonPost.getString("id"));
         }
+    }
+
+    private void log(Exception e, JSONObject jsonPost) {
+        logger.log(Level.SEVERE, String.format("Error processing post with ID: %s and Title: %s",
+                jsonPost.optString("id"),
+                jsonPost.optString("title")), e);
     }
 }

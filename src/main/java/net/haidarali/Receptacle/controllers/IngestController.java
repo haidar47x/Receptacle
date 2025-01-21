@@ -21,7 +21,6 @@ public class IngestController {
         this.postIngestionService = postIngestionService;
     }
 
-
     @GetMapping("/ingest")
     public String ingestView() {
         return "ingest_view";

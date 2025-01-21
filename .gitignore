@@ -33,3 +33,4 @@ build/
 .vscode/
 /src/main/resources/test_archive
 /data/receptacle.mv.db
+/data/

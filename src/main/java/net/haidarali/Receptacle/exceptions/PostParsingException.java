@@ -5,8 +5,8 @@ public class PostParsingException extends RuntimeException {
     private final String postId;
     private final String postTitle;
 
-    public PostParsingException(String message, String postId, String postTitle) {
-        super(message);
+    public PostParsingException(String postId, String postTitle) {
+        super("Error parsing post");
         this.postId = postId;
         this.postTitle = postTitle;
     }
@@ -18,4 +18,5 @@ public class PostParsingException extends RuntimeException {
     public String getPostTitle() {
         return postTitle;
     }
+
 }
